@@ -1,0 +1,22 @@
+[tool.poetry]
+name = "thisevent-fiap-auth-service"
+version = "0.1.0"
+description = ""
+authors = ["OscarSilvaOfficial <oscarkaka222@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+Flask = "^2.0.2"
+Flask-SQLAlchemy = "^2.5.1"
+Flask-RESTful = "^0.3.9"
+PyMySQL = "^1.0.2"
+Flask-Migrate = "^3.1.0"
+Flask-Script = "^2.0.6"
+SQLAlchemy-serializer = "^1.4.1"
+PyJWT = "^2.3.0"
+
+[tool.poetry.dev-dependencies]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
