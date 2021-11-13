@@ -11,6 +11,14 @@ class User(db.Model, SerializerMixin):
   name = Column(String(255), nullable=False)
   email = Column(String(255), nullable=False)
   password = Column(String(255), nullable=False)
+  
+  @staticmethod
+  def get(filter_by):
+    try:
+      user = User.query.filter_by(**filter_by).first()
+    except User.DoesNotExist:
+      return {'message': 'User does not exist'}, 404
+    return user
 
   def save(self):
     db.session.add(self)
