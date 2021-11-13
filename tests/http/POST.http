@@ -1,4 +1,4 @@
-POST http://localhost:5000 HTTP/1.1
+POST http://localhost:5000/api/users HTTP/1.1
 content-type: application/json
 
 {
@@ -6,3 +6,21 @@ content-type: application/json
     "email": "oscarkaka22233473@gmail.com",
     "password": "123"
 }
+
+###
+
+POST http://localhost:5000/api/signin HTTP/1.1
+content-type: application/json
+
+{
+    "email": "oscarkaka22233473@gmail.com",
+    "password": "123"
+}
+
+###
+
+
+POST http://localhost:5000/api/token/validate HTTP/1.1
+content-type: application/json
+authentication-token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiZW1haWwiOiJvc2Nhcmtha2EyMjIzMzQ3M0BnbWFpbC5jb20iLCJuYW1lIjoiT3NjYXIgZGEgU2lsdmEiLCJwYXNzd29yZCI6ImV5SjBlWEFpT2lKS1YxUWlMQ0poYkdjaU9pSklVekkxTmlKOS5leUpsYldGcGJDSTZJbTl6WTJGeWEyRnJZVEl5TWpNek5EY3pRR2R0WVdsc0xtTnZiU0lzSW5CaGMzTjNiM0prSWpvaU1USXpJbjAueEhQczVnalJiVWpkRUw5b0JMalJpdWRta055M2hLc0NrRmp3UFFxQzdpVSJ9.JSY-QVDPQ6z5qd7Z6Cnvbs6zNuuvTc48hzYoDbX2W9U
+###
