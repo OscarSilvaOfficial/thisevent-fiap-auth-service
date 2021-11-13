@@ -17,5 +17,6 @@ def application():
   db = sql_alchemy(app)
   Migrate(app, db)
   api = Api(app)
+  api.prefix = '/api'
   routes(api)
   return app
