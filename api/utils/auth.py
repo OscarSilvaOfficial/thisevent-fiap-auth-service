@@ -1,5 +1,5 @@
 from api.models.user import User
-from config import SECRET
+from api.config import SECRET
 from jwt import decode, encode
 
 def encode_password(email, password , *args, **kwargs):
