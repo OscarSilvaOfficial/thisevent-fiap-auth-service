@@ -2,6 +2,8 @@ from flask import request
 from flask.views import MethodView
 from api.models.user import User
 from api.utils.auth import encode_password, encode_token
+from api.utils.request import parse_request
+from api.views.signin.parser import parser
 
 
 class SignInView(MethodView):
@@ -9,9 +11,10 @@ class SignInView(MethodView):
   def __init__(self) -> None:
     super().__init__()
 
-  def post(self, request=request):
-    email = request.json.get('email')
-    password = request.json.get('password')
+  @parse_request(request, parser)
+  def post(self, request):
+    email = request.get('email')
+    password = request.get('password')
     user = User.get({'email': email})
 
     password = encode_password(email, password)

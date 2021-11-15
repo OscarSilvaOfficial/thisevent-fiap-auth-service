@@ -22,5 +22,8 @@ class User(db.Model, SerializerMixin):
 
   def save(self):
     db.session.add(self)
-    db.session.commit()
+    try:
+      db.session.commit()
+    except Exception:
+      raise {'message': 'User duplicated'}
     return self

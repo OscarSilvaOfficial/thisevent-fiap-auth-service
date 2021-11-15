@@ -1,7 +1,8 @@
 from flask import request
 from flask.views import MethodView
-from api.models.user import User
-from api.utils.auth import encode_password, encode_token, validate_token
+from api.utils.auth import validate_token
+from api.utils.request import parse_request
+from api.views.token.parser import parser
 
 
 class TokenView(MethodView):
@@ -9,14 +10,14 @@ class TokenView(MethodView):
   def __init__(self) -> None:
     super().__init__()
 
-  def post(self, request: request=request):
-    token = request.headers.get('authentication-token')
+  @parse_request(request, parser)
+  def post(self, request):
+    token = request.get('authentication-token')
 
-    if not token:
-      return {'message': 'Token is required'}, 401
-
-    if not validate_token(token):
+    try:
+      validate_token(token)
+    except Exception as e:
       return {'message': 'Invalid token'}, 401
-
+      
     return {'valid_token': True}
     
