@@ -14,10 +14,9 @@ class SignInView(MethodView):
   @parse_request(request, parser)
   def post(self, request):
     email = request.get('email')
-    password = request.get('password')
-    user = User.get({'email': email})
+    user = User.get({ 'email': email })
 
-    password = encode_password(email, password)
+    password = encode_password(**request)
 
     if password != user.password:
       return {'message': 'Wrong password'}, 401
