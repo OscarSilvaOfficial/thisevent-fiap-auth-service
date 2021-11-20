@@ -1,4 +1,4 @@
-from flask_restful import abort
+from flask import abort
 
 
 def parser(request):
@@ -6,10 +6,10 @@ def parser(request):
   Parse the request to get the username and password
   """
   if not request.json.get('email'):
-    return abort('Missing email field', 400)
+    return abort(400, 'Missing email field')
 
   if not request.json.get('password'):
-    return abort('Missing password field', 400)
+    return abort(400, 'Missing password field')
 
   return {
     'email': request.json.get('email'),

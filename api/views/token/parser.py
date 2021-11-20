@@ -5,7 +5,7 @@ def parser(request):
   Parse the request to get the token
   """
   if not request.headers.get('authentication-token'):
-      return abort('Token is required', 401)
+      return abort(401, 'Token is required')
 
   return {
     'authentication-token': request.headers.get('authentication-token')
