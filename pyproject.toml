@@ -16,6 +16,7 @@ SQLAlchemy-serializer = "^1.4.1"
 PyJWT = "^2.3.0"
 python-dotenv = "^0.19.2"
 SQLAlchemy-Utils = "^0.37.9"
+Flask-Cors = "^3.0.10"
 
 [tool.poetry.dev-dependencies]
 
