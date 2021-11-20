@@ -1,3 +1,4 @@
+from flask import abort
 from sqlalchemy import Column, Integer, String
 from sqlalchemy_serializer import SerializerMixin
 from api.models import db
@@ -14,10 +15,11 @@ class User(db.Model, SerializerMixin):
   
   @staticmethod
   def get(filter_by):
-    try:
-      user = User.query.filter_by(**filter_by).first()
-    except User.DoesNotExist:
-      return {'message': 'User does not exist'}, 404
+    user = User.query.filter_by(**filter_by).first()
+
+    if not user:
+      return abort(500, '')
+
     return user
 
   def save(self):
