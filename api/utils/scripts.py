@@ -2,7 +2,9 @@ from sqlalchemy import create_engine
 from sqlalchemy_utils import database_exists, create_database
 from sqlalchemy import create_engine, MetaData, Table, Column, Integer, String
 
-engine = create_engine('mysql+pymysql://root:123456@localhost/db?charset=utf8mb4', echo=True)  
+from api.config import DATABASE_URL
+
+engine = create_engine(DATABASE_URL, echo=True)  
 
 def create_databases():
   if not database_exists(engine.url):

@@ -3,6 +3,7 @@ from flask.views import MethodView
 from api.utils.auth import validate_token
 from api.utils.request import parse_request
 from api.views.token.parser import parser
+from flask import abort
 
 
 class TokenView(MethodView):
@@ -14,10 +15,10 @@ class TokenView(MethodView):
   def post(self, request):
     token = request.get('authentication-token')
 
-    try:
-      validate_token(token)
-    except Exception as e:
-      return {'message': 'Invalid token'}, 401
-      
-    return {'valid_token': True}
+    validation = validate_token(token)
+
+    if validation == False:
+      abort(401, 'Invalid authentication token')
+    
+    return validation.to_dict()
     

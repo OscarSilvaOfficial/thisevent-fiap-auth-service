@@ -35,4 +35,4 @@ def validate_token(token):
   if user.password != token['password']:
     return False
   
-  return True
+  return user

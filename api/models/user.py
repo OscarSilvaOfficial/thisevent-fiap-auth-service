@@ -22,6 +22,11 @@ class User(db.Model, SerializerMixin):
 
     return user
 
+  @staticmethod
+  def delete(user):
+    db.session.delete(user)
+    db.session.commit()
+
   def save(self):
     db.session.add(self)
     try:
